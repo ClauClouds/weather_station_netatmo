@@ -79,6 +79,8 @@ for indMonth in range(len(datetime_months)):
     RR_dataset = dat_RR.to_xarray()
     # appending to RR list 
     RR_dataset_year.append(RR_dataset)
+
+
 # concatenating monthly datasets
 T_dataset_year = xr.concat(T_dataset_year, dim='index')
 P_dataset_year = xr.concat(P_dataset_year, dim='index')
@@ -86,15 +88,12 @@ RH_dataset_year = xr.concat(RH_dataset_year, dim='index')
 RR_dataset_year = xr.concat(RR_dataset_year, dim='index')
 
 
-# In[19]:
 
-
+# defining time arrays for sampling stats on different times
 time_week = pd.date_range(start=datetime.datetime(2019,1,6,0,0,0), end=datetime.datetime(2019,12,29,0,0,0), freq='7D')
 print(len(time_week))
 time_mon  = pd.date_range(start=datetime.datetime(2019,1,1,0,0,0), end=datetime.datetime(2019,12,31,0,0,0), freq='30D')
 
-
-# In[86]:
 
 
 # loop on time week: search for time_t values in the time interval and calculate mean, median, max and min
